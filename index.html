@@ -5,24 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="cache-control" content="no-cache"/>
-    <title>Hora do dia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
+    <title>Horario e cotações</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body onload="carregar()">
     <header>
-        <h1>Hora do dia</h1>
+        <h1>Horário e cotações</h1>
     </header>
 
     <section>
         <div id="msg">
-            Aqui aparece a imagem
+            Aqui aparece a mensagem
+        </div>
+    </br>
+        <div id="photo">
+            <img class="image" src="assets/images/fotomanha.jpg" alt="Foto do dia">
         </div>
 
-        <div class="photo">
-            <img id="imagem" src="assets/images/fotomanha.jpg" alt="Foto do dia">
-        </div>
-
+    </br>
+    <div id="currency">
+        <p>
+            <label for="USD">Converter</label>
+            <input type="text" id="USD" size="10" value="0" onchange="usd()" />
+        </p>
+            <input type="radio" name="currency" id="USD" checked>
+            <label for="USD">Dólar</label>
+            <input type="radio" name="currency" id="BTC">
+            <label for="BTC">Bitcoin</label>
+        <p>
+            <input type="button" value="Converter" class="botao" onclick="converter()">
+        </p>
+        <label for="Converter">Preencha os dados acima para ver o resultado</label>
+    </div>
     </section>
 
     <footer>
