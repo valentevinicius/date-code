@@ -55,16 +55,24 @@ section {
     font: normal 15pt Arial;
 }
 
-#currency{
+#tabCotacao{
     background: cadetblue;
     border-radius: 6px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.397);
     width: 600px;
-    height: 180px;
+    height: 200px;
     align-items: center;
     padding: 25px;
 }
 
+#usdtxt {
+    font: normal 12pt Arial;
+    padding: 5px;
+}
+
+.moeda {
+    width: 50px;
+}
 footer {
     color: rgb(66, 66, 66);
     text-align: center;

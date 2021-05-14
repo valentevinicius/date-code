@@ -23,19 +23,23 @@
         </div>
 
     </br>
-    <div id="currency">
+        <div id="tabCotacao">
         <p>
             <label for="USD">Converter</label>
-            <input type="text" id="USD" size="10" value="0" onchange="usd()" />
+            <input type="text" name ="usdtxt" id="usdtxt" size="10" value="0"/>
         </p>
-            <input type="radio" name="currency" id="USD" checked>
+            <input type="radio" name="radcurrency" id="USD" checked>
             <label for="USD">Dólar</label>
-            <input type="radio" name="currency" id="BTC">
+            <input type="radio" name="radcurrency" id="BTC">
             <label for="BTC">Bitcoin</label>
+            <img class = "moeda" src="assets/images/icon-dolar.png" alt="dolar">
         <p>
             <input type="button" value="Converter" class="botao" onclick="converter()">
         </p>
-        <label for="Converter">Preencha os dados acima para ver o resultado</label>
+    </div>
+
+    <div id="res">
+        Preencha os dados acima para ver o resultado!
     </div>
     </section>
 
