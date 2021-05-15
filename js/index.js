@@ -1,5 +1,16 @@
+const getDollarValue = date => {
+    const urlBuilder = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao=%27${date}%27&$top=100&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao`
+    return fetch(urlBuilder).then(data => {
+        return data.json()
+    }).then(result => {
+        const {value} = result
+        return value
+    }).catch(err =>{
+        console.error('[ERRO]:', err)
+    })
+}
 function carregar(){
-    let msg = document.querySelector('#msg');
+    let msg = document.querySelector('#msg').children[0];
     let img = document.querySelector('#photo');
     let data = new Date();
     let hora = data.getHours();
@@ -24,24 +35,26 @@ function carregar(){
 }
 
 function converter() {
-    let formInput = document.querySelector('usdtxt');
+    let formInput = document.querySelector('#usdtxt');
     let res = document.querySelector('#res');
-    if (usdtxt.value.length == 0) {
-        alert('[ERRO] verifique os dados e tente novamente!')
-    } else{
-        let radcurrency = document.getElementsByName('radcurrency')
-        let dolar = Number(usdtxt.value) * 5
-        res.innerHTML = `Conversao concluida ${dolar} reais`
+    let dolar = document.querySelector('#moeda');
+    let option = document.getElementsByName('radcurrency');
 
-        let moeda = document.querySelector('dolar')
-        let option = ''
-        if(radcurrency[0].checked){
-            option = 'Dolar'
-            dolar.src = 'assets/images/icon-dolar.png'
-        } else if (radcurrency[1].checked) {
-            option = 'Bitcoin'
-            dolar.src = 'assets/images/icon-bitcoin.png'
-        }
-        res.innerHTML = `Detectamos ${option}`
+    if (option[0].checked) {
+        const x = getDollarValue('05-07-2021')
+        let dolarRes = Number(usdtxt.value) * 5
+        option = 'Dolar'
+        dolar.src = 'assets/images/icon-dolar.png'
+        res.innerHTML = `Detectamos ${option}, valor convertido: ${dolarRes} reais`
+    } else if (option[1].checked) {
+        let bitcoinRes = Number(usdtxt.value) * 255419.13
+        option = 'Bitcoin'
+        dolar.src = 'assets/images/icon-bitcoin.png'
+        res.innerHTML = `Detectamos ${option}, valor convertido: ${bitcoinRes.toFixed(0)} reais`
     }
+}
+
+window.onload = () => {
+    carregar()
+    converter()
 }

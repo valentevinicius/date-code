@@ -27,7 +27,7 @@ section {
     font: normal 20pt Arial;
     color: rgb(92, 92, 92);
 }
-.image {
+#image {
     padding: 0;
     margin: 0;
     width: 600px;
@@ -37,7 +37,11 @@ section {
   
 }
 
+.button-converter {
+    display: flex;
+}
 .botao {
+    margin: 8px auto;
 	background-color:#44c767;
 	border-radius:10px;
 	border:1px solid #18ab29;
@@ -55,7 +59,7 @@ section {
     font: normal 15pt Arial;
 }
 
-#tabCotacao{
+.tab-cotacao {
     background: cadetblue;
     border-radius: 6px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.397);
@@ -70,7 +74,7 @@ section {
     padding: 5px;
 }
 
-.moeda {
+#moeda {
     width: 50px;
 }
 footer {
