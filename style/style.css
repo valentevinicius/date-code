@@ -69,13 +69,20 @@ section {
     padding: 25px;
 }
 
+.radio-conversao {
+    font: normal 15pt Arial;
+    display: flex;
+    align-items: center;
+}
+
 #usdtxt {
     font: normal 12pt Arial;
     padding: 5px;
 }
 
 #moeda {
-    width: 50px;
+    width: 60px;
+    padding: auto;
 }
 footer {
     color: rgb(66, 66, 66);
