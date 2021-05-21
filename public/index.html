@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <title>Horario e cotações</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Cotação dólar e Bitcoin</h1>
+    </header>
+
+    <section>
+        <div class="msg" id="msg">
+            <p>Aqui aparece a mensagem</p>
+        </div>
+        <div id="photo" class="photo">
+            <img id="image" src="assets/images/fotomanha.jpg" alt="Foto do dia">
+        </div>
+
+        <div class="tab-cotacao">
+            <div class="input-cotacao">
+                <label for="USD">Converter</label>
+                <input type="text" name ="usdtxt" id="usdtxt" size="10" value="0"/>
+            </div>
+
+            <div class="radio-conversao">
+                <input type="radio" name="radcurrency" id="USD" checked>
+                <label for="USD">Dólar</label>
+                <input type="radio" name="radcurrency" id="BTC">
+                <label for="BTC">Bitcoin</label>
+                <img id="moeda" src="assets/images/icon-dolar.png" alt="dolar">
+            </div>
+            <div class="button-converter">   
+                <button class="botao" onclick="converter()">Converter</button>
+            </div>
+    </div>
+
+    <div id="res">
+        Preencha os dados acima para ver o resultado!
+    </div>
+    </section>
+
+    <footer>
+        <p>&copy; Vinicius Valente</p>
+    </footer>
+</body>
+</html>
