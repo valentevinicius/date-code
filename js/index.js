@@ -9,6 +9,8 @@ const getDollarValue = date => {
         console.error('[ERRO]:', err)
     })
 } //Funcao de acesso e manipulacao dos dados em json
+
+
 function carregar(){
     let msg = document.querySelector('#msg').children[0];
     let img = document.querySelector('#image');
@@ -35,13 +37,15 @@ function carregar(){
 }   
 
 function converter() {
+    const datetime = new Date();
+    const date = `${datetime.getMonth()}-${datetime.getDay()}-${datetime.getFullYear()}`
     let formInput = document.querySelector('#usdtxt');
     let res = document.querySelector('#res');
     let dolar = document.querySelector('#moeda');
     let option = document.getElementsByName('radcurrency');
 
     if (option[0].checked) {
-        const x = getDollarValue('05-20-2021').then(result => {
+        const x = getDollarValue(date).then(result => {
             // Caso precise manipular os valores utilize o forEach
             result.forEach(value => {
                 value.cotacaoCompra
@@ -50,6 +54,7 @@ function converter() {
             // ou retorne o valor direto que vc quer e agora sim x tem o valor que vc precisa
             return result[0].cotacaoCompra
         }) //Acesso a funcao
+        console.log(x)
         let dolarRes = formInput * x
         option = 'Dolar'
         dolar.src = 'assets/images/icon-dolar.png'
@@ -62,7 +67,12 @@ function converter() {
     }
 }
 
-window.onload = () => {
+// window.onload = () => {
+//     carregar()
+//     converter()
+// }
+const Init = () => {
     carregar()
     converter()
 }
+export default Init
