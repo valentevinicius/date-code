@@ -11,7 +11,7 @@ const getDollarValue = date => {
 } //Funcao de acesso e manipulacao dos dados em json
 function carregar(){
     let msg = document.querySelector('#msg').children[0];
-    let img = document.querySelector('#photo');
+    let img = document.querySelector('#image');
     let day = new Date();
     let hour = day.getHours();
 
@@ -26,13 +26,13 @@ function carregar(){
         img.src = 'assets/images/fototarde.jpg'
         //BOA TARDE
         document.body.style.background = '#EC7357'
-    } else {
+    } else if (hour >18 && hour <23) {
         msg.innerHTML = `Boa noite, agora sao ${hour} horas.`
         img.src = 'assets/images/fotonoite.jpg'
         //BOA NOITE
         document.body.style.background = '#754F44'
     }
-}
+}   
 
 function converter() {
     let formInput = document.querySelector('#usdtxt');
@@ -41,8 +41,16 @@ function converter() {
     let option = document.getElementsByName('radcurrency');
 
     if (option[0].checked) {
-        const parseInt(x) = getDollarValue('05-20-2021') //Acesso a funcao
-        let dolarRes = x
+        const x = getDollarValue('05-20-2021').then(result => {
+            // Caso precise manipular os valores utilize o forEach
+            result.forEach(value => {
+                value.cotacaoCompra
+                value.dataHoraCotacao
+            })
+            // ou retorne o valor direto que vc quer e agora sim x tem o valor que vc precisa
+            return result[0].cotacaoCompra
+        }) //Acesso a funcao
+        let dolarRes = formInput * x
         option = 'Dolar'
         dolar.src = 'assets/images/icon-dolar.png'
         res.innerHTML = `Detectamos ${option}, valor convertido: ${dolarRes.toFixed(0)} reais`
