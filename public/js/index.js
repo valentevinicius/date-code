@@ -1,8 +1,8 @@
 const getDollarValue = date => {
-    // const urlBuilder = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao=%27${date}%27&$top=1&$format=json&$select=cotacaoCompra,dataHoraCotacao`
-    const urlBuilder = 'http://localhost:5000/dollar'
+    const urlBuilder = `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao=%27${date}%27&$top=1&$format=json&$select=cotacaoCompra,dataHoraCotacao`
+    //const urlBuilder = 'http://localhost:5000/dollar'
     return fetch(urlBuilder).then(data => {
-        console.log(data.json())
+        //console.log(data.json())
         return data.json()
     }).then(result => {
         const {value} = result
@@ -48,19 +48,24 @@ function converter() {
 
     if (option[0].checked) {
         const x = getDollarValue(date).then(result => {
-            return result.value
-            
-        }) //Acesso a funcao
+            // Caso precise manipular os valores utilize o forEach
+            result.forEach(value => {
+              value.cotacaoCompra
+              value.dataHoraCotacao
+            })
+            // ou retorne o valor direto que vc quer e agora sim x tem o valor que vc precisa
+            return result[0].cotacaoCompra
+          }) //Acesso a funcao
         console.log(x)
-        let dolarRes = formInput * x
+        let dolarRes = x * formInput
         option = 'Dolar'
         dolar.src = 'assets/images/icon-dolar.png'
-        res.innerHTML = `Detectamos ${option}, valor convertido: ${dolarRes.toFixed(0)} reais`
+        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${dolarRes.toFixed(0)} reais`
     } else if (option[1].checked) {
         let bitcoinRes = Number(usdtxt.value) * 255419.13
         option = 'Bitcoin'
         dolar.src = 'assets/images/icon-bitcoin.png'
-        res.innerHTML = `Detectamos ${option}, valor convertido: ${bitcoinRes.toFixed(0)} reais`
+        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${bitcoinRes.toFixed(0)} reais`
     }
 }
 

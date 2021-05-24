@@ -8,11 +8,13 @@
     <title>Horario e cotações</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <script type="module" src="main.js"></script>
 </head>
 <body>
     <header>
-        <h1>Cotação dólar e Bitcoin</h1>
+        <h1>Cotação Dólar e Bitcoin</h1>
     </header>
 
     <section>
@@ -22,7 +24,7 @@
         <div id="photo" class="photo">
             <img id="image" src="assets/images/fotomanha.jpg" alt="Foto do dia">
         </div>
-
+    <!-- COTAÇÃO DOLAR E BITCOIN -->
         <div class="tab-cotacao">
             <div class="input-cotacao">
                 <label for="USD">Converter</label>
@@ -30,20 +32,25 @@
             </div>
 
             <div class="radio-conversao">
-                <input type="radio" name="radcurrency" id="USD" checked>
-                <label for="USD">Dólar</label>
-                <input type="radio" name="radcurrency" id="BTC">
-                <label for="BTC">Bitcoin</label>
+                <div id="botoes-radio">
+                    <input type="radio" name="radcurrency" id="USD" checked>
+                    <label for="USD">Dólar</label>
+                    <input type="radio" name="radcurrency" id="BTC">
+                    <label for="BTC">Bitcoin</label>
+                </div>
                 <img id="moeda" src="assets/images/icon-dolar.png" alt="dolar">
             </div>
-            <div class="button-converter">   
+            <div class="button-converter">
                 <button class="botao" onclick="converter()">Converter</button>
             </div>
-    </div>
-
-    <div id="res">
-        Preencha os dados acima para ver o resultado!
-    </div>
+            <div id="res">
+                Preencha os dados acima para ver o resultado!
+            </div>
+        </div>
+    <!-- FIM COTAÇÃO DOLAR E BITCOIN -->
+        <div class="tab-clima">
+            
+        </div>
     </section>
 
     <footer>
