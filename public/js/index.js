@@ -40,14 +40,14 @@ function carregar(){
 
 function converter() {
     const datetime = new Date();
-    const date = `${datetime.getMonth()}-${datetime.getDay()}-${datetime.getFullYear()}`
+    const dia = `${datetime.getMonth()+1}-${datetime.getDate()}-${datetime.getFullYear()}`
     let formInput = document.querySelector('#usdtxt');
     let res = document.querySelector('#res');
     let dolar = document.querySelector('#moeda');
     let option = document.getElementsByName('radcurrency');
-
+    console.log(dia)
     if (option[0].checked) {
-        const x = getDollarValue(date).then(result => {
+        const x = getDollarValue(dia).then(result => {
             // Caso precise manipular os valores utilize o forEach
             result.forEach(value => {
               value.cotacaoCompra
@@ -57,10 +57,10 @@ function converter() {
             return result[0].cotacaoCompra
           }) //Acesso a funcao
         console.log(x)
-        let dolarRes = x * formInput
+        let dolarRes = (x * formInput)
         option = 'Dolar'
         dolar.src = 'assets/images/icon-dolar.png'
-        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${dolarRes.toFixed(0)} reais`
+        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${dolarRes} reais`
     } else if (option[1].checked) {
         let bitcoinRes = Number(usdtxt.value) * 255419.13
         option = 'Bitcoin'

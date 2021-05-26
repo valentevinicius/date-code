@@ -134,8 +134,7 @@ section {
 
 .tab-clima {
     background: cadetblue;
-    float: left;
-    clear: both;
+    margin: 10px 10px;
     border-radius: 6px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.397);
     width: 450px;
