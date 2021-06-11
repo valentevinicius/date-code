@@ -10,8 +10,18 @@ const getDollarValue = date => {
     }).catch(err =>{
         console.error('[ERRO]:', err)
     })
-} //Funcao de acesso e manipulacao dos dados em json
+} //Funcao de acesso e manipulacao dos dados (dolar) em json
 
+async function fetchWeatherJSON() {
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=79cc3db9098c4dc2a4f10130211106&q=Sao Paulo&aqi=no`);
+    const weather = await response.json();
+    return weather;
+}
+
+fetchWeatherJSON().then(weather => {
+    weather;
+    console.log(weather);
+});
 
 function carregar(){
     let msg = document.querySelector('#msg').children[0];
@@ -47,7 +57,7 @@ function converter() {
     let option = document.getElementsByName('radcurrency');
     console.log(dia)
     if (option[0].checked) {
-        const x = getDollarValue(dia).then(result => {
+        const dollValue = getDollarValue(dia).then(result => {
             // Caso precise manipular os valores utilize o forEach
             result.forEach(value => {
               value.cotacaoCompra
@@ -56,11 +66,15 @@ function converter() {
             // ou retorne o valor direto que vc quer e agora sim x tem o valor que vc precisa
             return result[0].cotacaoCompra
           }) //Acesso a funcao
-        console.log(x)
-        let dolarRes = (x * formInput)
+        const printDollar = async () => {
+            const a = await dollValue;
+            let multiply = (a)
+            console.log(multiply)
+            return multiply;
+        };
         option = 'Dolar'
         dolar.src = 'assets/images/icon-dolar.png'
-        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${dolarRes} reais`
+        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${printDollar()} reais`
     } else if (option[1].checked) {
         let bitcoinRes = Number(usdtxt.value) * 255419.13
         option = 'Bitcoin'

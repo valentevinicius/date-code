@@ -50,7 +50,7 @@ section {
 
 .tab-cotacao {
     background: cadetblue;
-    margin: 10px 10px;
+    margin-right: auto;
     border-radius: 6px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.397);
     width: 450px;
@@ -134,12 +134,20 @@ section {
 
 .tab-clima {
     background: cadetblue;
-    margin: 10px 10px;
+    margin-left: auto;
     border-radius: 6px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.397);
     width: 450px;
     height: 300px;
     padding: 25px 25px;
+    /* position: absolute;
+    left: 600px;
+    top: 700px; */
+}
+
+#icon-weather {
+    display: block;
+    margin: auto;
 }
 
 footer {
