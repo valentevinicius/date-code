@@ -140,9 +140,7 @@ section {
     width: 450px;
     height: 300px;
     padding: 25px 25px;
-    /* position: absolute;
-    left: 600px;
-    top: 700px; */
+    text-align: center;
 }
 
 #icon-weather {

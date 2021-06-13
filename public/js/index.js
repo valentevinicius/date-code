@@ -15,19 +15,17 @@ const getDollarValue = date => {
 async function fetchWeatherJSON() {
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=79cc3db9098c4dc2a4f10130211106&q=Sao Paulo&aqi=no`);
     const weather = await response.json();
-    return weather.current.feelslike_c;
+    return weather;
 }
 
 fetchWeatherJSON().then(weather => {
     weather;
     console.log(weather);
+    let weatherDiv = document.querySelector('#weather')
+    let weatherIcon = document.querySelector('#icon-weather')
+    weatherDiv.innerHTML = `${weather.current.temp_c} graus celsius`
+    weatherIcon.src = weather.current.condition.icon;
 });
-
-let weatherDiv = document.querySelector('#weather')
-
-async function printWeather() {
-    weatherDiv.innerHTML(`${weatherDiv} graus`)
-}
 
 function carregar(){
     let msg = document.querySelector('#msg').children[0];
@@ -72,15 +70,9 @@ function converter() {
             // ou retorne o valor direto que vc quer e agora sim x tem o valor que vc precisa
             return result[0].cotacaoCompra
           }) //Acesso a funcao
-        const printDollar = async () => {
-            const a = await dollValue;
-            let multiply = (a)
-            console.log(multiply)
-            return multiply;
-        };
         option = 'Dolar'
         dolar.src = 'assets/images/icon-dolar.png'
-        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: ${printDollar()} reais`
+        res.innerHTML = `Detectamos <strong>${option}</strong>, valor convertido: reais`
     } else if (option[1].checked) {
         let bitcoinRes = Number(usdtxt.value) * 255419.13
         option = 'Bitcoin'
