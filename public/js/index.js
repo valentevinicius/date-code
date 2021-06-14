@@ -12,8 +12,11 @@ const getDollarValue = date => {
     })
 } //Funcao de acesso e manipulacao dos dados (dolar) em json
 
-async function fetchWeatherJSON() {
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=79cc3db9098c4dc2a4f10130211106&q=Sao Paulo&aqi=no`);
+//Check if browser supports W3C Geolocation API
+
+
+async function fetchWeatherJSON(position) {
+    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=79cc3db9098c4dc2a4f10130211106&q=-23.2980,-47.6742&aqi=no`);
     const weather = await response.json();
     return weather;
 }
@@ -23,7 +26,7 @@ fetchWeatherJSON().then(weather => {
     console.log(weather);
     let weatherDiv = document.querySelector('#weather')
     let weatherIcon = document.querySelector('#icon-weather')
-    weatherDiv.innerHTML = `${weather.current.temp_c} graus celsius`
+    weatherDiv.innerHTML = `${weather.current.temp_c} graus celsius, ${weather.current.condition.text}`
     weatherIcon.src = weather.current.condition.icon;
 });
 
@@ -59,7 +62,7 @@ function converter() {
     let res = document.querySelector('#res');
     let dolar = document.querySelector('#moeda');
     let option = document.getElementsByName('radcurrency');
-    console.log(dia)
+    console.log("Dia ", dia)
     if (option[0].checked) {
         const dollValue = getDollarValue(dia).then(result => {
             // Caso precise manipular os valores utilize o forEach
